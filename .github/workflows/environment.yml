@@ -1,41 +1,40 @@
-name: Environment Variables
-env:
-  WORKSPACE_ENVIRONMENT_VARIABLE: 'custom workspace environment variable'
+name: environment
 on: [push]
+env: 
+  WORKSPACE_ENVIRONMENT_VARIABLE: 'test workspace'
 jobs:
-  ubuntu:
-    env:
-      JOB_ENVIRONMENT_VARIABLE: 'custom job environment variable for ubuntu'
-    runs-on: ubuntu-latest
+  job1ubuntu:
+    runs-on: ubuntu
+    env: 
+      JOB_ENVIRONMENT_VARIABLE: 'test job'
     steps:
-      - name: Print custom environment variables from ubuntu-latest
-        env:
-          STEP_ENVIRONMENT_VARIABLE: 'custom step environment variable for bash'
-        run: |
-          echo "Accessing environment variables in run command"
+     - name: step1
+       env:
+        STEP_ENVIRONMENT_VARIABLE: 'test step'
+       run: 
+          echo "display using shell syntax"
           echo "$WORKSPACE_ENVIRONMENT_VARIABLE"
           echo "$JOB_ENVIRONMENT_VARIABLE"
           echo "$STEP_ENVIRONMENT_VARIABLE"
-          echo "------------------------------------------------------"
-          echo "Accessing environment variables using env context"
-          echo "${{ env.WORKSPACE_ENVIRONMENT_VARIABLE }}"
-          echo "${{ env.JOB_ENVIRONMENT_VARIABLE }}"
-          echo "${{ env.STEP_ENVIRONMENT_VARIABLE }} Not defined"
-  windows:
+          echo "diplay using YAML syntax"
+          echo "${{env.WORKSPACE_ENVIRONMENT_VARIABLE}}"
+          echo "${{env.STEP_ENVIRONMENT_VARIABLE}}"
+          echo "${{env.JOB_ENVIRONMENT_VARIABLE}}"
+  jobwindows:
+    runs-on: windows
     env:
-      JOB_ENVIRONMENT_VARIABLE: 'custom job environment variable for windows'
-    runs-on: windows-latest
+      JOB_ENVIRONMENT_VARIABLE: 'test windows job'
     steps:
-      - name: Print custom environment variables from windows-latest
-        env:
-          STEP_ENVIRONMENT_VARIABLE: 'custom step environment variable for powershell'
-        run: |
-          echo "Accessing environment variables in run command"
-          echo "$Env:WORKSPACE_ENVIRONMENT_VARIABLE"
-          echo "$Env:JOB_ENVIRONMENT_VARIABLE"
-          echo "$Env:STEP_ENVIRONMENT_VARIABLE"
-          echo "------------------------------------------------------"
-          echo "Accessing environment variables using env context"
-          echo "${{ env.WORKSPACE_ENVIRONMENT_VARIABLE }}"
-          echo "${{ env.JOB_ENVIRONMENT_VARIABLE }}"
-          echo "${{ env.STEP_ENVIRONMENT_VARIABLE }} Not defined"
+    - name: step1 windows
+      env:
+        STEP_ENVIRONMENT_VARIABLE: 'test windows step'
+      run:
+        echo "diplay using ps shell syntax"
+        echo "$Env:WORKSPACE_ENVIRONMENT_VARIABLE"
+        echo "$Env:JOB_ENVIRONMENT_VARIABLE""
+        echo "$Env:STEP_ENVIRONMENT_VARIABLE"
+        echo "diplay using YAML syntax"
+        echo "${{env.WORKSPACE_ENVIRONMENT_VARIABLE}}"
+        echo "{{env.STEP_ENVIRONMENT_VARIABLE}}"
+        echo "{{env.JOB_ENVIRONMENT_VARIABLE}}"
+        
