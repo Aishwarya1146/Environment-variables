@@ -1,12 +1,12 @@
 name: environment
-on: [push]
 env: 
   WORKSPACE_ENVIRONMENT_VARIABLE: 'test workspace'
+on: [push]
 jobs:
   job1ubuntu:
-    runs-on: ubuntu
     env: 
       JOB_ENVIRONMENT_VARIABLE: 'test job'
+    runs-on: ubuntu
     steps:
      - name: step1
        env:
@@ -21,9 +21,9 @@ jobs:
           echo "${{env.STEP_ENVIRONMENT_VARIABLE}}"
           echo "${{env.JOB_ENVIRONMENT_VARIABLE}}"
   jobwindows:
-    runs-on: windows
     env:
       JOB_ENVIRONMENT_VARIABLE: 'test windows job'
+    runs-on: windows
     steps:
     - name: step1 windows
       env:
