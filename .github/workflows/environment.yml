@@ -6,51 +6,12 @@ jobs:
   job1ubuntu:
     runs-on: ubuntu
     env: 
-      JOB_ENVIRONMENT_VARIABLE: 'test jobname: environment
-on: push
-env: 
-  WORKSPACE_ENVIRONMENT_VARIABLE: 'test workspace'
-jobs:
-  job1ubuntu:
-    runs-on: ubuntu
-    env: 
       JOB_ENVIRONMENT_VARIABLE: 'test job'
     steps:
      - name: step1
        env:
         STEP_ENVIRONMENT_VARIABLE: 'test step'
        run: 
-          echo "display using shell syntax"
-          echo "$WORKSPACE_ENVIRONMENT_VARIABLE"
-          echo "$JOB_ENVIRONMENT_VARIABLE"
-          echo "$STEP_ENVIRONMENT_VARIABLE"
-          echo "diplay using YAML syntax"
-          echo "${{env.WORKSPACE_ENVIRONMENT_VARIABLE}}"
-          echo "${{env.STEP_ENVIRONMENT_VARIABLE}}"
-          echo "${{env.JOB_ENVIRONMENT_VARIABLE}}"
-  jobwindows:
-    runs-on: windows
-    env:
-      JOB_ENVIRONMENT_VARIABLE: 'test windows job'
-    steps:
-    - name: step1 windows
-      env:
-        STEP_ENVIRONMENT_VARIABLE: 'test windows step'
-      run:
-        echo "diplay using ps shell syntax"
-        echo "$Env:WORKSPACE_ENVIRONMENT_VARIABLE"
-        echo "$Env:JOB_ENVIRONMENT_VARIABLE""
-        echo "$Env:STEP_ENVIRONMENT_VARIABLE"
-        echo "diplay using YAML syntax"
-        echo "${{env.WORKSPACE_ENVIRONMENT_VARIABLE}}"
-        echo "{{env.STEP_ENVIRONMENT_VARIABLE}}"
-        echo "{{env.JOB_ENVIRONMENT_VARIABLE}}"
-        
-    steps:
-     - name: step1
-       env:
-        STEP_ENVIRONMENT_VARIABLE: 'test step'
-        run: 
           echo "display using shell syntax"
           echo "$WORKSPACE_ENVIRONMENT_VARIABLE"
           echo "$JOB_ENVIRONMENT_VARIABLE"
