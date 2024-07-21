@@ -35,6 +35,6 @@ jobs:
         echo "$Env:STEP_ENVIRONMENT_VARIABLE"
         echo "diplay using YAML syntax"
         echo "${{env.WORKSPACE_ENVIRONMENT_VARIABLE}}"
-        echo "{{env.STEP_ENVIRONMENT_VARIABLE}}"
-        echo "{{env.JOB_ENVIRONMENT_VARIABLE}}"
+        echo "${{env.STEP_ENVIRONMENT_VARIABLE}}"
+        echo "${{env.JOB_ENVIRONMENT_VARIABLE}}"
         
